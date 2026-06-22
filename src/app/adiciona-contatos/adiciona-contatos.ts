@@ -1,36 +1,31 @@
-import { Component, inject } from '@angular/core';
-import { AgendaService } from '../model/agenda-service';
-import { Contato, TipoContato } from '../model/contato';
+import { Component } from '@angular/core';
+import { AgendaService } from '../model/agenda-service'; 
+import { Contato } from '../model/contato';
 
 @Component({
   selector: 'app-adiciona-contatos',
-  imports: [],
+  standalone: true,
+  imports: [], // Sem dependências extras como FormsModule
   templateUrl: './adiciona-contatos.html',
-  styleUrl: './adiciona-contatos.scss',
+  styleUrl: './adiciona-contatos.scss'
 })
 export class AdicionaContatos {
-  #agendaService = inject(AgendaService)
-  constructor() {
-    this.adicionarContato()
-  }
-  adicionarContato() {
-    let contato : Contato = {
-       nome: 'Bruno',
-       telefone: '849393928282',
-       email: 'bruno.gurgel@ifrn.edu.br',
-       aniversario: new Date (1982-1-16),
-       tipo: TipoContato.AMIGO
+
+  constructor(private agendaService: AgendaService) {}
+
+  salvarContato(nome: string, email: string) {
+    if (!nome || !email) {
+      alert('Por favor, preencha todos os campos!');
+      return;
     }
 
-    let leonardo : Contato = {
-       nome: 'Leonardo',
-       telefone: '849393928282',
-       email: 'leonardo@ifrn.edu.br',
-       aniversario: new Date (1982-1-16),
-       tipo: TipoContato.IFRN
+    const novo: Contato = { nome, email };
+    const sucesso = this.agendaService.adicionar(novo);
+    
+    if (sucesso) {
+      alert('Contato adicionado com sucesso!');
+    } else {
+      alert('Erro: Este e-mail já existe na agenda!');
     }
-
-    this.#agendaService.adicionar(contato)
-    this.#agendaService.adicionar(leonardo)
   }
 }

@@ -1,18 +1,24 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AgendaService } from '../model/agenda-service';
 import { Contato } from '../model/contato';
 
 @Component({
   selector: 'app-exibe-contatos',
-  imports: [],
+  standalone: true,
+  imports: [], 
   templateUrl: './exibe-contatos.html',
-  styleUrl: './exibe-contatos.scss',
+  styleUrl: './exibe-contatos.scss'
 })
-export class ExibeContatos {
-    #agendaService = inject(AgendaService)
-    protected readonly contatos: Contato[] = []
+export class ExibeContatos implements OnInit {
+  listaDeContatos: Contato[] = [];
 
-    constructor() {
-      this.contatos = this.#agendaService.obterTodos()
-    }
+  constructor(private agendaService: AgendaService) {}
+
+  ngOnInit() {
+    this.listaDeContatos = this.agendaService.obterTodos();
+  }
+
+  deletar(contato: Contato) {
+    this.agendaService.remover(contato);
+  }
 }

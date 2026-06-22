@@ -1,1 +1,17 @@
-<p>adiciona-contatos works!</p>
+<div class="container-cadastro">
+  <h3>Novo Contato</h3>
+  
+  <div class="campo-grupo">
+    <label>Nome:</label>
+    <input type="text" #nomeInput placeholder="Digite o nome...">
+  </div>
+
+  <div class="campo-grupo">
+    <label>E-mail:</label>
+    <input type="email" #emailInput placeholder="Digite o e-mail...">
+  </div>
+
+  <button on-click="salvarContato(nomeInput.value, emailInput.value); nomeInput.value=''; emailInput.value=''">
+    Salvar Contato
+  </button>
+</div>
