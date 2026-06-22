@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AdicionaContatos } from "./adiciona-contatos/adiciona-contatos";
+import { ExibeContatos } from "./exibe-contatos/exibe-contatos";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [AdicionaContatos, ExibeContatos],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
