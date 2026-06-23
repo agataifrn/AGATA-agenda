@@ -1,17 +1,21 @@
 <div class="container-cadastro">
   <h3>Novo Contato</h3>
   
-  <div class="campo-grupo">
-    <label>Nome:</label>
-    <input type="text" #nomeInput placeholder="Digite o nome...">
-  </div>
+  <form [formGroup]="formulario">
+    
+    <div class="campo-grupo">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" formControlName="nome" placeholder="Digite o nome...">
+    </div>
 
-  <div class="campo-grupo">
-    <label>E-mail:</label>
-    <input type="email" #emailInput placeholder="Digite o e-mail...">
-  </div>
+    <div class="campo-grupo">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" formControlName="email" placeholder="Digite o e-mail...">
+    </div>
 
-  <button on-click="salvarContato(nomeInput.value, emailInput.value); nomeInput.value=''; emailInput.value=''">
-    Salvar Contato
-  </button>
+    <button type="button" on-click="salvarContato()">
+      Salvar Contato
+    </button>
+    
+  </form>
 </div>
