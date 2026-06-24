@@ -9,8 +9,28 @@
     </div>
 
     <div class="campo-grupo">
+      <label for="telefone">Telefone:</label>
+      <input type="text" id="telefone" formControlName="telefone" placeholder="(00) 00000-0000">
+    </div>
+
+    <div class="campo-grupo">
       <label for="email">E-mail:</label>
       <input type="email" id="email" formControlName="email" placeholder="Digite o e-mail...">
+    </div>
+
+    <div class="campo-grupo">
+      <label for="aniversario">Aniversário:</label>
+      <input type="date" id="aniversario" formControlName="aniversario">
+    </div>
+
+    <div class="campo-grupo">
+      <label for="tipo">Tipo de Contato:</label>
+      <select id="tipo" formControlName="tipo">
+        <option value="">Selecione...</option>
+        @for (opcao of opcoesTipo; track opcao) {
+          <option [value]="opcao">{{ opcao }}</option>
+        }
+      </select>
     </div>
 
     <button type="button" on-click="salvarContato()">

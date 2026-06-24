@@ -10,7 +10,6 @@ import { Cabecalho } from './cabecalho/cabecalho';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-// ⚠️ O erro acontece se esquecer a palavra "export" aqui atrás!
-export class App { 
-  
+export class App {
+
 }
